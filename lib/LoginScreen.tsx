@@ -26,6 +26,9 @@ type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
 
 const dummyFunction = () => {};
 export interface ILoginScreenProps {
+  emailTextInputText?: string;
+  passwordTextInputText?: string;
+  loginButtonText?: string;
   haveAccountText?: string;
   disableDivider?: boolean;
   logoImageSource: any;
@@ -58,6 +61,9 @@ const LoginScreen: React.FC<ILoginScreenProps> = ({
   haveAccountButtonStyle,
   textInputContainerStyle,
   haveAccountText = "Already have an account?",
+  emailTextInputText = "Email",
+  passwordTextInputText = "Password",
+  loginButtonText = "Login",
   disableDivider,
   logoImageSource,
   onLoginPress,
@@ -81,10 +87,10 @@ const LoginScreen: React.FC<ILoginScreenProps> = ({
 
   const TextInputContainer = () => (
     <View style={[styles.textInputContainer, textInputContainerStyle]}>
-      <TextInput placeholder="Email" onChangeText={onEmailChange} />
+      <TextInput placeholder={emailTextInputText} onChangeText={onEmailChange} />
       <View style={styles.passwordTextInputContainer}>
         <TextInput
-          placeholder="Password"
+          placeholder={passwordTextInputText}
           secureTextEntry
           onChangeText={onPasswordChange}
         />
@@ -97,7 +103,7 @@ const LoginScreen: React.FC<ILoginScreenProps> = ({
       style={[styles.loginButtonStyle, loginButtonStyle]}
       onPress={onLoginPress}
     >
-      <Text style={[styles.loginTextStyle, loginTextStyle]}>Login</Text>
+      <Text style={[styles.loginTextStyle, loginTextStyle]}>{loginButtonText}</Text>
     </TouchableOpacity>
   );
 
